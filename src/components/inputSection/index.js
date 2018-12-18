@@ -4,6 +4,8 @@ import RideItem from "../rideItem";
 
 const InputSection = ({ ...props }) => {
 
+  this.inputValue = props.input || "";
+
   const stoneTypes = Object.keys(props.data);
   const chosenType = "";
   let dataSet = {};
@@ -19,8 +21,9 @@ const InputSection = ({ ...props }) => {
   };
 
   this.optionClickHandler = (stoneOptions) => {
-    const x = 123;
+    props.onSelection(stoneOptions);
   };
+
 
   let listOptions = Object.entries(dataSet).map(entry => {
     const optionKey = entry[0];
@@ -28,7 +31,8 @@ const InputSection = ({ ...props }) => {
     const stoneOptions = optionValue.map(optionSingle => {
       return {
         parent: optionKey,
-        data: optionSingle,
+        property: optionSingle.property,
+        value: optionSingle.value,
         label: `${optionSingle.property}: ${optionSingle.value} in ${optionKey}`,
       };
     });
@@ -43,7 +47,7 @@ const InputSection = ({ ...props }) => {
   }
 
   optionsFlat = optionsFlat.filter(optionSingle => {
-    return optionSingle.data.value.indexOf(props.input) === 0;
+    return optionSingle.value.indexOf(props.input) === 0;
   });
 
   const renderOptionsElements = () => {
@@ -76,7 +80,7 @@ const InputSection = ({ ...props }) => {
           <input
             list="browsers"
             name="browser"
-            value={props.input || ""}
+            value={this.inputValue}
             onChange={this.inputChangeHandler}
           />
           <ul id="browsers">

@@ -21,8 +21,7 @@ class StoneApp extends Component {
     super();
     this.state = {
       isLoading: false,
-      isBooked: false,
-      selection: -1,
+      selection: {},
       input: "",
       data: [],
       dataStructured: {},
@@ -107,18 +106,15 @@ class StoneApp extends Component {
   };
 
   selectionCallback = (newSelection) => {
-    if (utils.isTicketAvailable(newSelection, this.state.data)){
       this.setState({
         selection: newSelection,
-        timestamp: Date.now()
+        input: newSelection.label,
       });
-    }
   };
 
   inputChangeCallback = (newInput) => {
     this.setState({
       input: newInput,
-      timestamp: Date.now()
     });
   };
 
@@ -142,6 +138,7 @@ class StoneApp extends Component {
             data={this.state.dataStructured}
             input={this.state.input}
             onChange={this.inputChangeCallback}
+            onSelection={this.selectionCallback}
             submissionHandler={this.submissionCallback}
             timestamp={this.state.timestamp}
             isInputValid={inputStatus.isInputValid}
