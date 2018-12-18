@@ -4,11 +4,6 @@ import inputSection from '../../hocs/inputSection';
 
 const InputSection = ({ ...props }) => {
 
-  this.submitHandler = (e) => {
-    e.preventDefault();
-    props.submissionHandler();
-  };
-
   this.inputChangeHandler = (e) => {
     const newInput = e.target.value;
     props.onChange(newInput);
@@ -27,20 +22,9 @@ const InputSection = ({ ...props }) => {
             placeholder="#INPUT"
           />
         </div>
-        <div>
-          <button
-            type="submit"
-            className="btn"
-            onClick={this.submitHandler}
-            disabled={!props.isInputValid}
-          >SUBMIT</button>
-        </div>
       </form>
     </div>
   );
-};
-
-InputSection.contextTypes = {
 };
 
 export default inputSection(InputSection);
