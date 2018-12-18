@@ -6,14 +6,10 @@ import Reservation from './components/reservation';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
-import InfoItem from "./components/infoItem";
 import utils from "./utils/general";
 
-const API = "http://fast-rider.herokuapp.com/api/v1/";
-const DEFAULT_QUERY = "rides";
-const TICKETS_QUERY = "tickets";
-const TOKEN_BIT = "?token=";
-const TOKEN = "2313ffa865947d1909fe39933259051c29a9ef0740";
+const API = "./";
+const DEFAULT_QUERY = "stones.json";
 
 const INVALID_TIME_MSG = "Tickets only available between 9 a.m. and 7 p.m. Please come back later.";
 const HAS_TICKET_MSG = "Sorry. You already hold a valid ticket. You'll have to wait.";
@@ -37,7 +33,7 @@ class JungleTicketApp extends Component {
 
   getData = async () => {
     try {
-      const url = API + DEFAULT_QUERY + TOKEN_BIT + TOKEN;
+      const url = API + DEFAULT_QUERY;
       const response = await axios.get(url);
       this.setState({
         data: response.data,
@@ -73,30 +69,6 @@ class JungleTicketApp extends Component {
       });
     } catch (error) {
       console.log(error);
-    }
-  };
-
-  bookRide = async (pin, ride_id, token) => {
-    try {
-      const bodyFormData = new FormData();
-      bodyFormData.set('pin', pin);
-      bodyFormData.set('ride_id', ride_id);
-      bodyFormData.set('token', token);
-
-      const url = API + TICKETS_QUERY;
-      const response = await axios({
-        method: 'post',
-        url: url,
-        data: bodyFormData,
-        config: { headers: {'Content-Type': 'multipart/form-data' }}
-      });
-      this.setState({
-        reservation: response.data,
-        isLoading: false,
-        isBooked: true
-      });
-    } catch (error) {
-      throw new Error(error);
     }
   };
 
@@ -168,51 +140,17 @@ class JungleTicketApp extends Component {
     }
     this.storePin(this.state.pin);
     this.storeReservations(this.state.data, this.state.userReservations, this.state.pin, this.state.selection);
-    this.bookRide(this.state.pin, this.state.selection, TOKEN)
-      .catch(error => console.log(error));
+    // this.bookRide(this.state.pin, this.state.selection)
+    //   .catch(error => console.log(error));
   };
 
   render() {
     if (!this.state.isLoading && (typeof this.state.data === "object") && (this.state.data.length > 0)) {
       if (!this.state.isBooked){
         const inputStatus = this.checkInputValid();
-        const info = [
-          {
-            msg: "Enter your park ticket #PIN number, then select the desired ride while noting the stated return time",
-            icon: "ico-01.png"
-          },
-          {
-            msg: "Press 'submit' to confirm and retrieve your access code",
-            icon: "ico-02.png"
-          },
-          {
-            msg: "When the time comes, use the special FastRider line to cut out a considerable wait time",
-            icon: "ico-03.png"
-          }
-        ];
         return (
           <div className="container">
-              <h1>The Jungle&trade; FastRider Service</h1>
-            <div className="row">
-              <div className="col-sm-12 col-md-4">
-                <InfoItem
-                  infoMsg={info[0].msg}
-                  infoIcon={info[0].icon}
-                />
-              </div>
-              <div className="col-sm-12 col-md-4">
-                <InfoItem
-                  infoMsg={info[1].msg}
-                  infoIcon={info[1].icon}
-                />
-              </div>
-              <div className="col-sm-12 col-md-4">
-                <InfoItem
-                  infoMsg={info[2].msg}
-                  infoIcon={info[2].icon}
-                />
-              </div>
-            </div>
+            <h1>The Jungle&trade; FastRider Service</h1>
             <PinSection
               data={this.state.data}
               pin={this.state.pin}

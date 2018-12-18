@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "type": "Diamond",
+    "shape": "Round",
+    "color": "E",
+    "clarity": "FL"
+  },
+  {
+    "id": 2,
+    "type": "Ruby",
+    "shape": "Emerald",
+    "clarity": "IF"
+  },
+  {
+    "id": 3,
+    "type": "Ruby",
+    "shape": "Round",
+    "clarity": "IF"
+  },
+  {
+    "id": 4,
+    "type": "Ruby",
+    "shape": "Princess",
+    "clarity": "FL"
+  },
+  {
+    "id": 5,
+    "type": "Ruby",
+    "shape": "Round",
+    "clarity": "FL"
+  },
+  {
+    "id": 6,
+    "type": "Diamond",
+    "shape": "Princess",
+    "color": "D",
+    "clarity": "SI1"
+  },
+  {
+    "id": 7,
+    "type": "Ruby",
+    "shape": "Round",
+    "clarity": "IF"
+  },
+  {
+    "id": 8,
+    "type": "Sapphire",
+    "shape": "Round",
+    "clarity": "FL"
+  },
+  {
+    "id": 9,
+    "type": "Ruby",
+    "shape": "Round",
+    "clarity": "SI1"
+  },
+  {
+    "id": 10,
+    "type": "Diamond",
+    "shape": "Square Radiant",
+    "color": "P",
+    "clarity": "FL"
+  },
+  {
+    "id": 11,
+    "type": "Diamond",
+    "shape": "Square Radiant",
+    "color": "P",
+    "clarity": "SI1"
+  },
+  {
+    "id": 12,
+    "type": "Ruby",
+    "shape": "Round",
+    "clarity": "I3"
+  },
+  {
+    "id": 13,
+    "type": "Sapphire",
+    "shape": "Oval",
+    "clarity": "FL"
+  },
+  {
+    "id": 14,
+    "type": "Diamond",
+    "shape": "Pear",
+    "color": "O",
+    "clarity": "VS2"
+  },
+  {
+    "id": 15,
+    "type": "Ruby",
+    "shape": "Emerald",
+    "clarity": "VS2"
+  },
+  {
+    "id": 16,
+    "type": "Diamond",
+    "shape": "Emerald",
+    "color": "P",
+    "clarity": "FL"
+  },
+  {
+    "id": 17,
+    "type": "Sapphire",
+    "shape": "Emerald",
+    "color": "E",
+    "clarity": "VVS1"
+  },
+  {
+    "id": 18,
+    "type": "Diamond",
+    "shape": "Asscher",
+    "clarity": "FL"
+  },
+  {
+    "id": 19,
+    "type": "Diamond",
+    "shape": "Round",
+    "clarity": "I3"
+  },
+  {
+    "id": 20,
+    "type": "Diamond",
+    "shape": "Radiant",
+    "clarity": "FL"
+  },
+  {
+    "id": 21,
+    "type": "Sapphire",
+    "shape": "Radiant",
+    "clarity": "I1"
+  },
+  {
+    "id": 22,
+    "type": "Diamond",
+    "shape": "Princess",
+    "color": "E",
+    "clarity": "I2"
+  },
+  {
+    "id": 23,
+    "type": "Diamond",
+    "shape": "Princess",
+    "color": "M",
+    "clarity": "FL"
+  },
+  {
+    "id": 24,
+    "type": "Sapphire",
+    "shape": "Princess",
+    "clarity": "FL"
+  },
+  {
+    "id": 25,
+    "type": "Diamond",
+    "shape": "Princess",
+    "color": "K",
+    "clarity": "SI1"
+  }
+]
