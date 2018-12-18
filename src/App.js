@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import InputSection from './components/inputSection';
 import ErrorSection from './components/errorSection';
-import Rides from './components/rides';
+import Stones from './components/stones';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
@@ -13,7 +13,7 @@ const DEFAULT_QUERY = "stones.json";
 const INVALID_TIME_MSG = "Tickets only available between 9 a.m. and 7 p.m. Please come back later.";
 const HAS_TICKET_MSG = "Sorry. You already hold a valid ticket. You'll have to wait.";
 const INVALID_INPUT_MSG = "Please check the input and try again.";
-const INVALID_SELECTION_MSG = "Please select a ride.";
+const INVALID_SELECTION_MSG = "Please select a stone.";
 
 class StoneApp extends Component {
 
@@ -124,7 +124,7 @@ class StoneApp extends Component {
       return;
     }
     this.storeInput(this.state.input);
-    // this.bookRide(this.state.input, this.state.selection)
+    // this.bookStone(this.state.input, this.state.selection)
     //   .catch(error => console.log(error));
   };
 
@@ -133,7 +133,7 @@ class StoneApp extends Component {
       const inputStatus = this.checkInputValid();
       return (
         <div className="container">
-          <h1>The Jungle&trade; FastRider Service</h1>
+          <h1>Rapaport Stone Search</h1>
           <InputSection
             data={this.state.dataStructured}
             input={this.state.input}
@@ -146,7 +146,7 @@ class StoneApp extends Component {
           <ErrorSection
             errorMsg={inputStatus.errorMsg}
           />
-          <Rides
+          <Stones
             data={this.state.data}
             input={this.state.input}
             onChange={this.selectionCallback}

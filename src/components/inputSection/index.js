@@ -1,6 +1,6 @@
 import React from 'react';
 import inputSection from '../../hocs/inputSection';
-import RideItem from "../rideItem";
+import StoneItem from "../stoneItem";
 
 const InputSection = ({ ...props }) => {
 

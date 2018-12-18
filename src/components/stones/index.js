@@ -1,10 +1,10 @@
 import React from 'react';
-import rides from './../../hocs/rides';
-import RideItem from './../../components/rideItem';
+import stones from '../../hocs/stones';
+import StoneItem from './../../components/stoneItem';
 
-const Rides = ({ ...props }) => {
+const Stones = ({ ...props }) => {
 
-  const renderRideItems = (props) => {
+  const renderStoneItems = (props) => {
 
     const stoneFilter = (stone) => {
       if (typeof stone.type !== "string" || typeof props.input !== "string"){
@@ -19,7 +19,7 @@ const Rides = ({ ...props }) => {
 
     return stonesFiltered.map((value, arrayIndex) => {
       return (
-        <RideItem
+        <StoneItem
           value={value}
           arrayIndex={arrayIndex}
           onChange={props.onChange}
@@ -30,9 +30,9 @@ const Rides = ({ ...props }) => {
 
   return (
     <div className="row" {...props} >
-      { renderRideItems(props) }
+      { renderStoneItems(props) }
     </div>
   );
 };
 
-export default rides(Rides);
+export default stones(Stones);

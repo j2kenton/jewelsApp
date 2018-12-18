@@ -1,9 +1,9 @@
 import React from 'react';
-import rideItem from './../../hocs/rideItem';
+import stoneItem from './../../hocs/stoneItem';
 
 const ICONS_URI = "./icons/";
 
-const RideItem = ({ ...props }) => {
+const StoneItem = ({ ...props }) => {
 
   const value = props.value;
   const arrayIndex = props.arrayIndex;
@@ -16,7 +16,7 @@ const RideItem = ({ ...props }) => {
   const activeClassname = (isActive) ? "active" : "inactive";
   const isPartOfGroup = arrayIndex > -1;
   const colClasses = (isPartOfGroup) ? "col-sm-6 col-md-3" : "col-sm-6 col-md-4 offset-sm-3 offset-sm-4";
-  const className = `ridePane ${colClasses} ${activeClassname}`;
+  const className = `stonePane ${colClasses} ${activeClassname}`;
   const styling =  (isActive) ? {"background-color": value.color} : {};
 
   const timeIcon = ICONS_URI + "ico-03.png";
@@ -41,4 +41,4 @@ const RideItem = ({ ...props }) => {
   );
 };
 
-export default rideItem(RideItem);
+export default stoneItem(StoneItem);

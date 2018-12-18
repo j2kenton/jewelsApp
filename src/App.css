@@ -68,7 +68,7 @@ h1 {
   white-space: normal;
 }
 
-.ridePane {
+.stonePane {
   background-color: #373737;
   color: #efefef;
   margin-bottom: 10px;
@@ -78,18 +78,18 @@ h1 {
   min-height: 150px !important;
 }
 
-.ridePane .zoneColor {
+.stonePane .zoneColor {
   width: 100%;
 }
 
-.ridePane .zoneName {
+.stonePane .zoneName {
   margin-top: 10px;
   float: right;
   color: #656565;
   padding-right: 10px;
 }
 
-.ridePane .nameField {
+.stonePane .nameField {
   clear: both;
   text-align: center;
   font-size: 200%;
@@ -97,18 +97,18 @@ h1 {
   margin: 30px 20px 10px;
 }
 
-.ridePane .returnTime {
+.stonePane .returnTime {
   float: left;
   color: #656565;
   padding-left: 10px;
 }
 
-.ridePane .remainingTickets {
+.stonePane .remainingTickets {
   float: right;
   color: #656565;
 }
 
-.ridePane .icon {
+.stonePane .icon {
   width: 20%;
   padding-right: 5px;
 }

@@ -54,17 +54,17 @@ export default {
   },
 
   isTicketAvailable(selection, data){
-    const rideId = selection;
-    const chosenRide = data.filter(ride => ride.id === rideId);
-    return chosenRide[0].remaining_tickets > 0;
+    const stoneId = selection;
+    const chosenStone = data.filter(stone => stone.id === stoneId);
+    return chosenStone[0].remaining_tickets > 0;
   },
 
   isPinValid(pin){
     return (typeof pin === "string") && this.isPinFormatValid(pin);
   },
 
-  isSelectionValid(rideId, data){
-    return Number.isInteger(rideId) && (rideId > -1) && this.isTicketAvailable(rideId, data);
+  isSelectionValid(stoneId, data){
+    return Number.isInteger(stoneId) && (stoneId > -1) && this.isTicketAvailable(stoneId, data);
   },
 
 }
