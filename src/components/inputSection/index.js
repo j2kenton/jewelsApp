@@ -4,12 +4,21 @@ import RideItem from "../rideItem";
 
 const InputSection = ({ ...props }) => {
 
+  const stoneTypes = Object.keys(props.data);
+  const chosenType = "";
+  let dataSet = {};
+  if (chosenType){
+    dataSet[chosenType] = props.data[chosenType];
+  } else {
+    dataSet = props.data;
+  }
+
   this.inputChangeHandler = (e) => {
     const newInput = e.target.value;
     props.onChange(newInput);
   };
 
-  let listOptions = Object.entries(props.data).map(entry => {
+  let listOptions = Object.entries(dataSet).map(entry => {
     const optionKey = entry[0];
     const optionValue = entry[1];
     const stoneOptions = optionValue.map(optionSingle => {
