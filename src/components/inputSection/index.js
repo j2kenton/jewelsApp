@@ -9,27 +9,7 @@ const InputSection = ({ ...props }) => {
     props.onChange(newInput);
   };
 
-  const options = {
-    Diamond: [
-      {
-        property: "shape",
-        value: "Emerald",
-      }, {
-        property: "color",
-        value: "E",
-      },
-    ],
-    Sapphire: [{
-      property: "shape",
-      value: "Emerald",
-    }],
-    Ruby: [{
-      property: "shape",
-      value: "Emerald",
-    }],
-  };
-
-  let listOptions = Object.entries(options).map(entry => {
+  let listOptions = Object.entries(props.data).map(entry => {
     const optionKey = entry[0];
     const optionValue = entry[1];
     const stoneOptions = optionValue.map(optionSingle => {

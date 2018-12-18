@@ -24,7 +24,8 @@ class StoneApp extends Component {
       isBooked: false,
       selection: -1,
       input: "",
-      data: []
+      data: [],
+      dataStructured: {},
     };
   }
 
@@ -32,8 +33,35 @@ class StoneApp extends Component {
     try {
       const url = API + DEFAULT_QUERY;
       const response = await axios.get(url);
+
+      let dataStructured = {};
+      response.data.forEach((element) => {
+        if (!dataStructured[element.type]){
+          dataStructured[element.type] = [];
+        }
+        const shape = {
+          property: "shape",
+          value: element.shape,
+        };
+        dataStructured[element.type].push(shape);
+        const clarity = {
+          property: "clarity",
+          value: element.clarity,
+        };
+        dataStructured[element.type].push(clarity);
+        if (typeof element.color === "string"){
+          const color = {
+            property: "color",
+            value: element.color,
+          };
+          dataStructured[element.type].push(color);
+        }
+      });
+
+
       this.setState({
         data: response.data,
+        dataStructured: dataStructured,
         isLoading: false
       });
     } catch (error) {
@@ -111,7 +139,7 @@ class StoneApp extends Component {
         <div className="container">
           <h1>The Jungle&trade; FastRider Service</h1>
           <InputSection
-            data={this.state.data}
+            data={this.state.dataStructured}
             input={this.state.input}
             onChange={this.inputChangeCallback}
             submissionHandler={this.submissionCallback}
