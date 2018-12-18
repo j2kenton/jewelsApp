@@ -1,7 +1,6 @@
 import React from 'react';
 import inputSection from '../../hocs/inputSection';
 import RideItem from "../rideItem";
-// import Slide from './../slide';
 
 const InputSection = ({ ...props }) => {
 
@@ -34,9 +33,13 @@ const InputSection = ({ ...props }) => {
     const optionKey = entry[0];
     const optionValue = entry[1];
     const stoneOptions = optionValue.map(optionSingle => {
-      return [`${optionSingle.property}: ${optionSingle.value} in ${optionKey}`];
+      return {
+        parent: optionKey,
+        data: optionSingle,
+        label: `${optionSingle.property}: ${optionSingle.value} in ${optionKey}`,
+      };
     });
-    return stoneOptions;
+    return stoneOptions; // options for each stone are nested in this array
   });
 
   let optionsFlat = []; // we need to flatten the nested arrays to single depth
@@ -49,7 +52,7 @@ const InputSection = ({ ...props }) => {
   const renderOptionsElements = () => {
     return optionsFlat.map(stoneOptions => {
       return (
-        <option value={stoneOptions[0]}/>
+        <option value={stoneOptions.label}/>
       )
     });
   };
