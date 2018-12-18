@@ -4,9 +4,9 @@ export default function carousel(WrappedComponent) {
   return class extends Component {
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-      const isSelectionValid = Number.isInteger(nextProps.selection);
-      const isSelectionChanged = (this.props.selection !== nextProps.selection);
-      return isSelectionValid && isSelectionChanged;
+      const isInputValid = Number.isInteger(nextProps.input);
+      const isInputChanged = (this.props.input !== nextProps.input);
+      return isInputValid && isInputChanged;
     }
 
     render() {

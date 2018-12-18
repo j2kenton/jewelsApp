@@ -1,30 +1,30 @@
 import React from 'react';
-import pinSection from './../../hocs/pinSection';
+import inputSection from '../../hocs/inputSection';
 // import Slide from './../slide';
 
-const PinSection = ({ ...props }) => {
+const InputSection = ({ ...props }) => {
 
   this.submitHandler = (e) => {
     e.preventDefault();
     props.submissionHandler();
   };
 
-  this.pinChangeHandler = (e) => {
-    const newPin = e.target.value;
-    props.onChange(newPin);
+  this.inputChangeHandler = (e) => {
+    const newInput = e.target.value;
+    props.onChange(newInput);
   };
 
   return (
-    <div className="row" id="pinSection">
+    <div className="row" id="inputSection">
       <form className="form-inline">
         <div className="form-group">
           <input
             type="text"
-            value={props.pin}
-            onChange={this.pinChangeHandler}
+            value={props.input}
+            onChange={this.inputChangeHandler}
             className="form-control"
-            id="inputPin"
-            placeholder="#PIN"
+            id="inputInput"
+            placeholder="#INPUT"
           />
         </div>
         <div>
@@ -40,7 +40,7 @@ const PinSection = ({ ...props }) => {
   );
 };
 
-PinSection.contextTypes = {
+InputSection.contextTypes = {
 };
 
-export default pinSection(PinSection);
+export default inputSection(InputSection);

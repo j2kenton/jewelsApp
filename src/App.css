@@ -25,25 +25,25 @@ h1 {
 }
 
 
-#pinSection {
+#inputSection {
   margin-top: 40px;
   padding-bottom: 20px;
 }
 
-#pinSection form {
+#inputSection form {
   width: 100%;
 }
 
-#pinSection form .form-group {
+#inputSection form .form-group {
   width: calc(100% - 20vw);
 }
 
-#pinSection form .form-group input {
+#inputSection form .form-group input {
   width: 100%;
   border-radius: 0;
 }
 
-#pinSection form button {
+#inputSection form button {
   width: 20vw;
   border-radius: 0;
   background-color: #4c4c4b;

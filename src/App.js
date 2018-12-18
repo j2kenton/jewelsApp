@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PinSection from './components/pinSection';
+import InputSection from './components/inputSection';
 import ErrorSection from './components/errorSection';
 import Rides from './components/rides';
 import Reservation from './components/reservation';
@@ -13,7 +13,7 @@ const DEFAULT_QUERY = "stones.json";
 
 const INVALID_TIME_MSG = "Tickets only available between 9 a.m. and 7 p.m. Please come back later.";
 const HAS_TICKET_MSG = "Sorry. You already hold a valid ticket. You'll have to wait.";
-const INVALID_PIN_MSG = "Please check the pin and try again.";
+const INVALID_INPUT_MSG = "Please check the input and try again.";
 const INVALID_SELECTION_MSG = "Please select a ride.";
 
 class JungleTicketApp extends Component {
@@ -24,7 +24,7 @@ class JungleTicketApp extends Component {
       isLoading: false,
       isBooked: false,
       selection: -1,
-      pin: "",
+      input: "",
       reservation: {},
       userReservations: {},
       data: []
@@ -47,14 +47,14 @@ class JungleTicketApp extends Component {
     }
   };
 
-  storeReservations = (rides, userReservations, pin, selection) => {
+  storeReservations = (rides, userReservations, input, selection) => {
     if (!userReservations){
       userReservations = {};
     }
     const chosenRide = rides.filter(ride => ride.id === selection);
     const returnTime = chosenRide[0].return_time;
     const timestamp = new Date(returnTime).getTime();
-    userReservations[pin] = timestamp;
+    userReservations[input] = timestamp;
     this.setState({
       userReservations: userReservations
     });
@@ -74,22 +74,22 @@ class JungleTicketApp extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    this.loadPin();
+    this.loadInput();
     this.getData();
     this.loadReservations();
   }
 
-  storePin = (pin) => {
-    localStorage.setItem("pin", pin);
+  storeInput = (input) => {
+    localStorage.setItem("input", input);
   };
 
-  loadPin = () => {
-    const pin = localStorage.getItem("pin");
-    this.setState({ pin: pin });
+  loadInput = () => {
+    const input = localStorage.getItem("input");
+    this.setState({ input: input });
   };
 
-  isUserWithoutTicket = (pin) => {
-    const userLastTicketTime = this.state.userReservations[pin];
+  isUserWithoutTicket = (input) => {
+    const userLastTicketTime = this.state.userReservations[input];
     if (typeof userLastTicketTime == "undefined"){ // eslint-disable-line
       return true;
     }
@@ -104,12 +104,12 @@ class JungleTicketApp extends Component {
     if (!utils.isTimeValid()){
       isInputValid = false;
       errorMsg = INVALID_TIME_MSG;
-    } else if (!this.isUserWithoutTicket(this.state.pin)){
+    } else if (!this.isUserWithoutTicket(this.state.input)){
       isInputValid = false;
       errorMsg = HAS_TICKET_MSG;
-    } else if (!utils.isPinValid(this.state.pin)){
+    } else if (!utils.isInputValid(this.state.input)){
       isInputValid = false;
-      errorMsg = INVALID_PIN_MSG;
+      errorMsg = INVALID_INPUT_MSG;
     } else if (!utils.isSelectionValid(this.state.selection, this.state.data)){
       isInputValid = false;
       errorMsg = INVALID_SELECTION_MSG;
@@ -126,9 +126,9 @@ class JungleTicketApp extends Component {
     }
   };
 
-  pinChangeCallback = (newPin) => {
+  inputChangeCallback = (newInput) => {
     this.setState({
-      pin: newPin,
+      input: newInput,
       timestamp: Date.now()
     });
   };
@@ -138,9 +138,9 @@ class JungleTicketApp extends Component {
     if (!inputStatus.isInputValid){
       return;
     }
-    this.storePin(this.state.pin);
-    this.storeReservations(this.state.data, this.state.userReservations, this.state.pin, this.state.selection);
-    // this.bookRide(this.state.pin, this.state.selection)
+    this.storeInput(this.state.input);
+    this.storeReservations(this.state.data, this.state.userReservations, this.state.input, this.state.selection);
+    // this.bookRide(this.state.input, this.state.selection)
     //   .catch(error => console.log(error));
   };
 
@@ -151,22 +151,22 @@ class JungleTicketApp extends Component {
         return (
           <div className="container">
             <h1>The Jungle&trade; FastRider Service</h1>
-            <PinSection
+            <InputSection
               data={this.state.data}
-              pin={this.state.pin}
-                onChange={this.pinChangeCallback}
-                submissionHandler={this.submissionCallback}
-                timestamp={this.state.timestamp}
-                isInputValid={inputStatus.isInputValid}
-              />
-              <ErrorSection
-                errorMsg={inputStatus.errorMsg}
-              />
-              <Rides
-                data={this.state.data}
-                selection={this.state.selection}
-                onChange={this.selectionCallback}
-              />
+              input={this.state.input}
+              onChange={this.inputChangeCallback}
+              submissionHandler={this.submissionCallback}
+              timestamp={this.state.timestamp}
+              isInputValid={inputStatus.isInputValid}
+            />
+            <ErrorSection
+              errorMsg={inputStatus.errorMsg}
+            />
+            <Rides
+              data={this.state.data}
+              input={this.state.input}
+              onChange={this.selectionCallback}
+            />
           </div>
         )
       } else {

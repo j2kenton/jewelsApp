@@ -12,7 +12,7 @@ const Rides = ({ ...props }) => {
           value={value}
           arrayIndex={arrayIndex}
           onChange={props.onChange}
-          selection={props.selection}
+          pin={props.pin}
         />
       )
     })

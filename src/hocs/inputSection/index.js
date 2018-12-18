@@ -6,10 +6,10 @@ export default function carousel(WrappedComponent) {
     };
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-      const isPinValid = (typeof nextProps.pin === "string");
-      const isPinChanged = (this.props.pin !== nextProps.pin);
+      const isInputValid = (typeof nextProps.input === "string");
+      const isInputChanged = (this.props.input !== nextProps.input);
       const isValidChanged = (this.props.isInputValid !== nextProps.isInputValid);
-      return isPinValid && (isPinChanged || isValidChanged);
+      return isInputValid && (isInputChanged || isValidChanged);
     }
 
     render() {

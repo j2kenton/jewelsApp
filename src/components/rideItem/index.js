@@ -12,7 +12,7 @@ const RideItem = ({ ...props }) => {
     props.onChange(id);
   };
 
-  const isActive = value.id === props.selection;
+  const isActive = value.id === props.input;
   const activeClassname = (isActive) ? "active" : "inactive";
   const isPartOfGroup = arrayIndex > -1;
   const colClasses = (isPartOfGroup) ? "col-sm-6 col-md-3" : "col-sm-6 col-md-4 offset-sm-3 offset-sm-4";
