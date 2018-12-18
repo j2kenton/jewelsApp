@@ -20,7 +20,7 @@ const InputSection = ({ ...props }) => {
         <div className="form-group">
           <input
             type="text"
-            value={props.input}
+            value={props.input || ""}
             onChange={this.inputChangeHandler}
             className="form-control"
             id="inputInput"

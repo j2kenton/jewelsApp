@@ -6,13 +6,23 @@ const Rides = ({ ...props }) => {
 
   const renderRideItems = (props) => {
 
-    return props.data.map((value, arrayIndex) => {
+    const stoneFilter = (stone) => {
+      if (typeof stone.type !== "string" || typeof props.input !== "string"){
+        return true;
+      }
+      const type = stone.type.toLowerCase();
+      const input = props.input.toLowerCase();
+      return type.indexOf(input) === 0;
+    };
+
+    const stonesFiltered = props.data.filter(stoneFilter);
+
+    return stonesFiltered.map((value, arrayIndex) => {
       return (
         <RideItem
           value={value}
           arrayIndex={arrayIndex}
           onChange={props.onChange}
-          pin={props.pin}
         />
       )
     })
