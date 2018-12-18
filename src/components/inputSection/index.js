@@ -38,6 +38,10 @@ const InputSection = ({ ...props }) => {
     optionsFlat = listOptions.reduce((acc, val) => acc.concat(val), []); // revert to a conservative approach :)
   }
 
+  optionsFlat = optionsFlat.filter(optionSingle => {
+    return optionSingle.data.value.indexOf(props.input) === 0;
+  });
+
   const renderOptionsElements = () => {
     return optionsFlat.map(stoneOptions => {
       return (
@@ -59,7 +63,12 @@ const InputSection = ({ ...props }) => {
             placeholder="#INPUT"
           />*/}
 
-          <input list="browsers" name="browser" />
+          <input
+            list="browsers"
+            name="browser"
+            value={props.input || ""}
+            onChange={this.inputChangeHandler}
+          />
           <datalist id="browsers">
             { renderOptionsElements() }
           </datalist>
