@@ -18,6 +18,10 @@ const InputSection = ({ ...props }) => {
     props.onChange(newInput);
   };
 
+  this.optionClickHandler = (stoneOptions) => {
+    const x = 123;
+  };
+
   let listOptions = Object.entries(dataSet).map(entry => {
     const optionKey = entry[0];
     const optionValue = entry[1];
@@ -45,7 +49,13 @@ const InputSection = ({ ...props }) => {
   const renderOptionsElements = () => {
     return optionsFlat.map(stoneOptions => {
       return (
-        <option value={stoneOptions.label}/>
+        <li
+          value={stoneOptions.label}
+          data-values={stoneOptions.data}
+          onClick={() => this.optionClickHandler(stoneOptions)}
+        >
+          {stoneOptions.label}
+        </li>
       )
     });
   };
@@ -69,9 +79,9 @@ const InputSection = ({ ...props }) => {
             value={props.input || ""}
             onChange={this.inputChangeHandler}
           />
-          <datalist id="browsers">
+          <ul id="browsers">
             { renderOptionsElements() }
-          </datalist>
+          </ul>
 
         </div>
       </form>
