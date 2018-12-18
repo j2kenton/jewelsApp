@@ -129,7 +129,7 @@ class StoneApp extends Component {
   };
 
   render() {
-    if (!this.state.isLoading && (typeof this.state.data === "object") && (this.state.data.length > 0)) {
+    if (!this.state.isLoading && Array.isArray(this.state.data) && (this.state.data.length > 0)) {
       const inputStatus = this.checkInputValid();
       return (
         <div className="container">
