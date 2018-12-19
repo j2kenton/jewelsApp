@@ -6,10 +6,9 @@ const InputSection = ({ ...props }) => {
   this.inputValue = props.input || "";
 
   const stoneTypes = Object.keys(props.data);
-  const chosenType = "";
   let dataSet = {};
-  if (chosenType){
-    dataSet[chosenType] = props.data[chosenType];
+  if (props.stoneType){
+    dataSet[props.stoneType] = props.data[props.stoneType];
   } else {
     dataSet = props.data;
   }
@@ -17,6 +16,11 @@ const InputSection = ({ ...props }) => {
   this.inputChangeHandler = (e) => {
     const newInput = e.target.value;
     props.onChange(newInput);
+  };
+
+  this.stoneChangeHandler = (e) => {
+    const newInput = e.target.value;
+    props.onTypeChange(newInput);
   };
 
   this.optionClickHandler = (stoneOptions) => {
@@ -63,6 +67,16 @@ const InputSection = ({ ...props }) => {
     });
   };
 
+  const renderStonesElements = () => {
+    return stoneTypes.map(type => {
+      return (
+        <option>
+          {type}
+        </option>
+      )
+    });
+  };
+
   return (
     <div className="row" id="inputSection">
       <form className="form-inline">
@@ -77,6 +91,11 @@ const InputSection = ({ ...props }) => {
             { renderOptionsElements() }
           </ul>
         </div>
+        <select 
+          onChange={this.stoneChangeHandler}
+        >
+          { renderStonesElements() }
+        </select>
       </form>
     </div>
   );

@@ -6,8 +6,9 @@ export default function carousel(WrappedComponent) {
     shouldComponentUpdate(nextProps, nextState, nextContext) {
       const isInputValid = (typeof nextProps.input === "string");
       const isInputChanged = (this.props.input !== nextProps.input);
-      const isValidChanged = (this.props.isInputValid !== nextProps.isInputValid);
-      return isInputValid && (isInputChanged || isValidChanged);
+      const isStoneTypeValid = (typeof nextProps.stoneType === "string");
+      const isStoneTypeChanged = (this.props.stoneType !== nextProps.stoneType);
+      return isInputValid && isStoneTypeValid && (isInputChanged || isStoneTypeChanged);
     }
 
     render() {

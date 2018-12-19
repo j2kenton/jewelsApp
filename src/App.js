@@ -17,6 +17,7 @@ class StoneApp extends Component {
       isLoading: false,
       selection: {},
       input: "",
+      stoneType: "",
       data: [],
       dataStructured: {},
     };
@@ -92,6 +93,12 @@ class StoneApp extends Component {
     });
   };
 
+  typeChangeCallback = (newInput) => {
+    this.setState({
+      stoneType: newInput,
+    });
+  };
+
   submissionCallback = () => {
     this.storeInput(this.state.input);
     // this.bookStone(this.state.input, this.state.selection)
@@ -106,7 +113,9 @@ class StoneApp extends Component {
           <InputSection
             data={this.state.dataStructured}
             input={this.state.input}
+            stoneType={this.state.stoneType}
             onChange={this.inputChangeCallback}
+            onTypeChange={this.typeChangeCallback}
             onSelection={this.selectionCallback}
             submissionHandler={this.submissionCallback}
             timestamp={this.state.timestamp}

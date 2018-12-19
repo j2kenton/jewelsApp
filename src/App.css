@@ -35,7 +35,7 @@ h1 {
 }
 
 #inputSection form .form-group {
-  width: 100%;
+  width: calc(100% - 20vw);
 }
 
 #inputSection form .form-group input {
@@ -43,7 +43,7 @@ h1 {
   border-radius: 0;
 }
 
-#inputSection form button {
+#inputSection form select {
   width: 20vw;
   border-radius: 0;
   background-color: #4c4c4b;
