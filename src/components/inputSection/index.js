@@ -73,19 +73,25 @@ const InputSection = ({ ...props }) => {
       return null;
     }
     const optionsByLabel = new Set();
-    const historyElements =  props.history.map(stoneOptions => {
+    let history = props.history;
+    if (props.stoneType){
+      history = history.filter((stoneOptions) => {
+        return stoneOptions.parent === props.stoneType;
+      });
+    }
+    const historyElements =  history.map(stoneOptions => {
       if (optionsByLabel.has(stoneOptions.label)){
         return null; // skip duplicates
       }
       optionsByLabel.add(stoneOptions.label);
       return (
         <li
-          className="optionItem"
+          className="option optionItem"
           value={stoneOptions.label}
           onClick={() => this.optionClickHandler(stoneOptions)}
         >
-          <MaterialIcon icon="history" invert />
-          <span>{stoneOptions.label}</span>
+          <MaterialIcon icon="history" invert className="option" />
+          <span className="option">{stoneOptions.label}</span>
         </li>
       )
     });
@@ -96,12 +102,12 @@ const InputSection = ({ ...props }) => {
       optionsByLabel.add(stoneOptions.label);
       return (
         <li
-          className="optionItem"
+          className="option optionItem"
           value={stoneOptions.label}
           onClick={() => this.optionClickHandler(stoneOptions)}
         >
-          <MaterialIcon icon="search" invert />
-          <span>{stoneOptions.label}</span>
+          <MaterialIcon icon="search" invert className="option" />
+          <span className="option">{stoneOptions.label}</span>
         </li>
       )
     });
