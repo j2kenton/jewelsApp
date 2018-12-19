@@ -119,9 +119,10 @@ class StoneApp extends Component {
   wrapperClickHandler = (e) => {
     const targetClasses = e.target.className.split(" ");
     const isOptionClick = targetClasses.includes("optionItem");
+    const newInput = this.state.selection.label || "";
     if (!isOptionClick && this.state.isTyping){
       this.setState({
-        input: "",
+        input: newInput,
       });
     }
   };
