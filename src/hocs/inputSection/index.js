@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 export default function carousel(WrappedComponent) {
   return class extends Component {
-    static contextTypes = {
-    };
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
       const isInputValid = (typeof nextProps.input === "string");

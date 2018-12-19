@@ -1,6 +1,5 @@
 import React from 'react';
 import inputSection from '../../hocs/inputSection';
-import StoneItem from "../stoneItem";
 
 const InputSection = ({ ...props }) => {
 
@@ -68,15 +67,6 @@ const InputSection = ({ ...props }) => {
     <div className="row" id="inputSection">
       <form className="form-inline">
         <div className="form-group">
-          {/*<input
-            type="text"
-            value={props.input || ""}
-            onChange={this.inputChangeHandler}
-            className="form-control"
-            id="inputInput"
-            placeholder="#INPUT"
-          />*/}
-
           <input
             list="browsers"
             name="browser"
@@ -86,7 +76,6 @@ const InputSection = ({ ...props }) => {
           <ul id="browsers">
             { renderOptionsElements() }
           </ul>
-
         </div>
       </form>
     </div>
