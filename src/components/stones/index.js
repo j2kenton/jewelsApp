@@ -30,7 +30,7 @@ const Stones = ({ ...props }) => {
   };
 
   return (
-    <div className="row" {...props} >
+    <div className="row" id="stonesSection" {...props} >
       <table>
         <thead>
         <tr>
