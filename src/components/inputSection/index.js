@@ -30,10 +30,10 @@ const InputSection = ({ ...props }) => {
     dataSet = props.data;
   }
 
-  this.optionsFlat = utils.generateOptions(dataSet, props.input);
+  this.options = utils.generateOptions(dataSet, props.input);
 
   const renderOptionsElements = () => {
-    if (!props.input || !Array.isArray(this.optionsFlat) || this.optionsFlat.length === 0){
+    if (!props.input || !Array.isArray(this.options) || this.options.length === 0){
       return null;
     }
     const optionsByLabel = new Set();
@@ -43,20 +43,21 @@ const InputSection = ({ ...props }) => {
         return stoneOptions.parent === props.stoneType;
       });
     }
-    const historyElements =  history.map(stoneOptions => {
+    const historyElements =  history.map((stoneOptions, arrayIndex) => {
       if (optionsByLabel.has(stoneOptions.label)){
         return null; // skip duplicates
       }
       optionsByLabel.add(stoneOptions.label);
       return (
         <OptionItem
+          key={arrayIndex}
           stoneOptions={stoneOptions}
           icon="history"
           optionClickHandler={() => this.optionClickHandler(stoneOptions)}
         />
       )
     });
-    const optionsElements =  this.optionsFlat.map(stoneOptions => {
+    const optionsElements =  this.options.map(stoneOptions => {
       if (!stoneOptions.label || optionsByLabel.has(stoneOptions.label)){ // skip invalid options or duplicates
         return null;
       }

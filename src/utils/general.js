@@ -48,7 +48,7 @@ export default {
       optionsFlat = options.reduce((acc, val) => acc.concat(val), []); // revert to a conservative approach :)
     }
     optionsFlat = optionsFlat.filter(optionSingle => {
-      return optionSingle.value.indexOf(input) === 0;
+      return optionSingle.value.startsWith(input);
     });
     return optionsFlat;
   },
