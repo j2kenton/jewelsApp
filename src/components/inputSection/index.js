@@ -1,6 +1,6 @@
 import React from 'react';
 import inputSection from '../../hocs/inputSection';
-import MaterialIcon from 'material-icons-react';
+import OptionItem from "../optionItem";
 
 const EMPTY_INPUT = "";
 
@@ -71,14 +71,11 @@ const InputSection = ({ ...props }) => {
       }
       optionsByLabel.add(stoneOptions.label);
       return (
-        <li
-          className="option optionItem"
-          value={stoneOptions.label}
+        <OptionItem
+          stoneOptions={stoneOptions}
+          icon="history"
           onClick={() => this.optionClickHandler(stoneOptions)}
-        >
-          <MaterialIcon icon="history" invert className="option" />
-          <span className="option">{stoneOptions.label}</span>
-        </li>
+        />
       )
     });
     const optionsElements =  this.optionsFlat.map(stoneOptions => {
@@ -87,14 +84,11 @@ const InputSection = ({ ...props }) => {
       }
       optionsByLabel.add(stoneOptions.label);
       return (
-        <li
-          className="option optionItem"
-          value={stoneOptions.label}
+        <OptionItem
+          stoneOptions={stoneOptions}
+          icon="search"
           onClick={() => this.optionClickHandler(stoneOptions)}
-        >
-          <MaterialIcon icon="search" invert className="option" />
-          <span className="option">{stoneOptions.label}</span>
-        </li>
+        />
       )
     });
     const lineBreak = (<hr/>);
