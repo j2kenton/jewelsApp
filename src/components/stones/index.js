@@ -31,7 +31,20 @@ const Stones = ({ ...props }) => {
 
   return (
     <div className="row" {...props} >
-      { renderStoneItems(props) }
+      <table>
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Stone</th>
+          <th>Shape</th>
+          <th>Clarity</th>
+          <th>Color</th>
+        </tr>
+        </thead>
+        <tbody>
+        { renderStoneItems(props) }
+        </tbody>
+      </table>
     </div>
   );
 };

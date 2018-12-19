@@ -21,7 +21,6 @@ h1 {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  overflow: hidden;
   white-space: nowrap;
 }
 
@@ -74,51 +73,6 @@ h1 {
   white-space: normal;
 }
 
-.stonePane {
-  background-color: #373737;
-  color: #efefef;
-  margin-bottom: 10px;
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-  padding-bottom: 10px;
-  min-height: 150px !important;
-}
-
-.stonePane .zoneColor {
-  width: 100%;
-}
-
-.stonePane .zoneName {
-  margin-top: 10px;
-  float: right;
-  color: #656565;
-  padding-right: 10px;
-}
-
-.stonePane .nameField {
-  clear: both;
-  text-align: center;
-  font-size: 200%;
-  white-space: normal;
-  margin: 30px 20px 10px;
-}
-
-.stonePane .returnTime {
-  float: left;
-  color: #656565;
-  padding-left: 10px;
-}
-
-.stonePane .remainingTickets {
-  float: right;
-  color: #656565;
-}
-
-.stonePane .icon {
-  width: 20%;
-  padding-right: 5px;
-}
-
 .red {
   color: red;
 }
@@ -135,10 +89,27 @@ h1 {
 }
 
 .dropdownMenu .optionItem {
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px 10px 10px;
 }
 
 .dropdownMenu .optionItem:hover {
   background-color: #efefef;
   color: #4c4c4b;
+}
+
+table td, table th {
+  color: #efefef;
+  padding: 10px 10px 5px 10px;
+}
+
+table tbody tr {
+  background-color: #373737;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #4c4c4b;
+}
+
+table tbody tr:hover {
+  -webkit-filter: contrast(200%);
 }
