@@ -15,7 +15,7 @@ const InputSection = ({ ...props }) => {
     value: type,
   }));
 
-  this.stoneTypes.push(allOption);
+  this.stoneTypes.unshift(allOption);
   let dataSet = {};
   if (props.stoneType){
     dataSet[props.stoneType] = props.data[props.stoneType];
