@@ -20,6 +20,7 @@ class StoneApp extends Component {
       stoneType: "",
       data: [],
       dataStructured: {},
+      history: [],
     };
   }
 
@@ -80,11 +81,14 @@ class StoneApp extends Component {
     this.setState({ input: input });
   };
 
-    selectionCallback = (newSelection) => {
-      this.setState({
-        selection: newSelection,
-        input: newSelection.label,
-      });
+  selectionCallback = (newSelection) => {
+    let newHistory = this.state.history;
+    newHistory.push(newSelection);
+    this.setState({
+      selection: newSelection,
+      input: newSelection.label,
+      history: newHistory,
+    });
   };
 
   inputChangeCallback = (newInput) => {
@@ -118,7 +122,7 @@ class StoneApp extends Component {
             onTypeChange={this.typeChangeCallback}
             onSelection={this.selectionCallback}
             submissionHandler={this.submissionCallback}
-            timestamp={this.state.timestamp}
+            history={this.state.history}
           />
           <Stones
             data={this.state.data}

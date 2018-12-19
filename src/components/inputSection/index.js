@@ -52,29 +52,43 @@ const InputSection = ({ ...props }) => {
     return stoneOptions; // options for each stone are nested in this array
   });
 
-  let optionsFlat = []; // we need to flatten the nested arrays to single depth
+  this.optionsFlat = []; // we need to flatten the nested arrays to single depth
   if (typeof [].flat === "function"){ // use bleeding edge array method if available ;)
-    optionsFlat = listOptions.flat();
+    this.optionsFlat = listOptions.flat();
   } else {
-    optionsFlat = listOptions.reduce((acc, val) => acc.concat(val), []); // revert to a conservative approach :)
+    this.optionsFlat = listOptions.reduce((acc, val) => acc.concat(val), []); // revert to a conservative approach :)
   }
 
-  optionsFlat = optionsFlat.filter(optionSingle => {
+  this.optionsFlat = this.optionsFlat.filter(optionSingle => {
     return optionSingle.value.indexOf(props.input) === 0;
   });
 
   const renderOptionsElements = () => {
-    return optionsFlat.map(stoneOptions => {
+    if (!Array.isArray(this.optionsFlat) || this.optionsFlat.length === 0){
+      return null;
+    }
+    const historyElements =  props.history.map(stoneOptions => {
       return (
         <li
+          className="red"
           value={stoneOptions.label}
-          data-values={stoneOptions.data}
           onClick={() => this.optionClickHandler(stoneOptions)}
         >
           {stoneOptions.label}
         </li>
       )
     });
+    const optionsElements =  this.optionsFlat.map(stoneOptions => {
+      return (
+        <li
+          value={stoneOptions.label}
+          onClick={() => this.optionClickHandler(stoneOptions)}
+        >
+          {stoneOptions.label}
+        </li>
+      )
+    });
+    return historyElements.concat(optionsElements);
   };
 
   const renderStonesElements = () => {
