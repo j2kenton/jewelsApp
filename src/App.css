@@ -50,6 +50,7 @@ h1 {
   border-radius: 0;
   background-color: #4c4c4b;
   color: #ffffff;
+  height: 30px;
 }
 
 #errorSection {

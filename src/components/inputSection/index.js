@@ -11,7 +11,7 @@ const InputSection = ({ ...props }) => {
   }
 
   const allOption = {
-    label: "All",
+    label: "All Stone Types",
     value: "",
   };
 
@@ -92,7 +92,12 @@ const InputSection = ({ ...props }) => {
         </li>
       )
     });
-    return historyElements.concat(optionsElements);
+    const listItems =  historyElements.concat(optionsElements);
+    return (
+      <ul className="dropdownMenu">
+        {listItems}
+      </ul>
+    );
   };
 
   const renderStonesElements = () => {
@@ -108,20 +113,18 @@ const InputSection = ({ ...props }) => {
   return (
     <div className="row" id="inputSection">
       <form className="form-inline">
+        <select
+          onChange={this.stoneChangeHandler}
+        >
+          { renderStonesElements() }
+        </select>
         <div className="form-group">
           <input
             value={this.inputValue}
             onChange={this.inputChangeHandler}
           />
-          <ul className="dropdownMenu">
             { renderOptionsElements() }
-          </ul>
         </div>
-        <select 
-          onChange={this.stoneChangeHandler}
-        >
-          { renderStonesElements() }
-        </select>
       </form>
     </div>
   );
