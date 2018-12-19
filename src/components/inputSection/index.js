@@ -72,7 +72,12 @@ const InputSection = ({ ...props }) => {
     if (!props.input || !Array.isArray(this.optionsFlat) || this.optionsFlat.length === 0){
       return null;
     }
+    const optionsByLabel = new Set();
     const historyElements =  props.history.map(stoneOptions => {
+      if (optionsByLabel.has(stoneOptions.label)){
+        return null; // skip duplicates
+      }
+      optionsByLabel.add(stoneOptions.label);
       return (
         <li
           className="optionItem"
@@ -85,9 +90,10 @@ const InputSection = ({ ...props }) => {
       )
     });
     const optionsElements =  this.optionsFlat.map(stoneOptions => {
-      if (!stoneOptions.label){
+      if (!stoneOptions.label || optionsByLabel.has(stoneOptions.label)){ // skip invalid options or duplicates
         return null;
       }
+      optionsByLabel.add(stoneOptions.label);
       return (
         <li
           className="optionItem"
