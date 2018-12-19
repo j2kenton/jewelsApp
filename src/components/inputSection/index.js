@@ -1,6 +1,7 @@
 import React from 'react';
 import inputSection from '../../hocs/inputSection';
 import OptionItem from "../optionItem";
+import utils from "../../utils/general";
 
 const EMPTY_INPUT = "";
 
@@ -29,30 +30,7 @@ const InputSection = ({ ...props }) => {
     dataSet = props.data;
   }
 
-  let listOptions = Object.entries(dataSet).map(entry => {
-    const optionKey = entry[0];
-    const optionValue = entry[1];
-    const stoneOptions = optionValue.map(optionSingle => {
-      return {
-        parent: optionKey,
-        property: optionSingle.property,
-        value: optionSingle.value,
-        label: `${optionSingle.property}: ${optionSingle.value} in ${optionKey}`,
-      };
-    });
-    return stoneOptions; // options for each stone are nested in this array
-  });
-
-  this.optionsFlat = []; // we need to flatten the nested arrays to single depth
-  if (typeof [].flat === "function"){ // use bleeding edge array method if available ;)
-    this.optionsFlat = listOptions.flat();
-  } else {
-    this.optionsFlat = listOptions.reduce((acc, val) => acc.concat(val), []); // revert to a conservative approach :)
-  }
-
-  this.optionsFlat = this.optionsFlat.filter(optionSingle => {
-    return optionSingle.value.indexOf(props.input) === 0;
-  });
+  this.optionsFlat = utils.generateOptions(dataSet, props.input);
 
   const renderOptionsElements = () => {
     if (!props.input || !Array.isArray(this.optionsFlat) || this.optionsFlat.length === 0){
