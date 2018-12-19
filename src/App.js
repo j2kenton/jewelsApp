@@ -134,7 +134,10 @@ class StoneApp extends Component {
           className="container"
           onClick={this.wrapperClickHandler}
         >
-          <h1>Rapaport Stone Search</h1>
+          <header>
+            <img id="mainIcon" src="./rapIcon.png"  alt="Main Icon" height="25px"/>
+            <h2 className="pageHeading">STONE SEARCH</h2>
+          </header>
           <InputSection
             data={this.state.dataStructured}
             input={this.state.input}

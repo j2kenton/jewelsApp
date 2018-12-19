@@ -10,10 +10,15 @@ html, body, #root {
   color: #656565;
 }
 
-h1 {
-  padding-top: 20px;
-  padding-bottom: 20px;
+header {
   text-align: center;
+  padding-top: 30px;
+}
+
+.pageHeading {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #efefef;
 }
 
 #wrapper {
