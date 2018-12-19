@@ -22,7 +22,7 @@ const Stones = ({ ...props }) => {
       return (
         <StoneItem
           value={value}
-          arrayIndex={arrayIndex}
+          key={arrayIndex}
           onChange={props.onChange}
         />
       )

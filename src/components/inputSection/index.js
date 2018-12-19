@@ -107,9 +107,9 @@ const InputSection = ({ ...props }) => {
   };
 
   const renderStonesElements = () => {
-    return this.stoneTypes.map(type => {
+    return this.stoneTypes.map((type, arrayIndex) => {
       return (
-        <option value={type.value}>
+        <option value={type.value} key={`stone-type-${arrayIndex}`}>
           {type.label}
         </option>
       )
