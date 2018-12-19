@@ -110,12 +110,10 @@ const InputSection = ({ ...props }) => {
       <form className="form-inline">
         <div className="form-group">
           <input
-            list="browsers"
-            name="browser"
             value={this.inputValue}
             onChange={this.inputChangeHandler}
           />
-          <ul id="browsers">
+          <ul className="dropdownMenu">
             { renderOptionsElements() }
           </ul>
         </div>
