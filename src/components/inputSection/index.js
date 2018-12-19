@@ -52,7 +52,7 @@ const InputSection = ({ ...props }) => {
         <OptionItem
           stoneOptions={stoneOptions}
           icon="history"
-          onClick={() => this.optionClickHandler(stoneOptions)}
+          optionClickHandler={() => this.optionClickHandler(stoneOptions)}
         />
       )
     });
@@ -65,7 +65,7 @@ const InputSection = ({ ...props }) => {
         <OptionItem
           stoneOptions={stoneOptions}
           icon="search"
-          onClick={() => this.optionClickHandler(stoneOptions)}
+          optionClickHandler={() => this.optionClickHandler(stoneOptions)}
         />
       )
     });
