@@ -51,7 +51,7 @@ header {
   padding-left: 10px;
 }
 
-#inputSection form select {
+select {
   width: 20vw;
   border-radius: 0;
   background-color: #4c4c4b;
@@ -76,10 +76,6 @@ header {
   white-space: normal;
 }
 
-.red {
-  color: red;
-}
-
 .dropdownMenu {
   position: absolute;
   top: 29px;
@@ -89,15 +85,38 @@ header {
   color: #ffffff;
   list-style-type: none;
   padding: 0;
+  outline: -webkit-focus-ring-color auto 1px;
 }
 
 .dropdownMenu .optionItem {
   padding: 5px 10px 10px 10px;
+  font-weight: 500;
+}
+
+.dropdownMenu .optionItem i {
+  font-size: 130%;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .9);
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  top: 5px;
+  margin-right: 7px;
 }
 
 .dropdownMenu .optionItem:hover {
   background-color: #efefef;
   color: #4c4c4b;
+  outline: -webkit-focus-ring-color auto 1px;
+}
+
+.dropdownMenu hr {
+  background-color: #efefef;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+table th {
+  background-color: #000000;
+  font-weight: bold;
 }
 
 table td, table th {
