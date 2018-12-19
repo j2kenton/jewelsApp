@@ -135,8 +135,8 @@ class StoneApp extends Component {
           onClick={this.wrapperClickHandler}
         >
           <header>
-            <img id="mainIcon" src="./rapIcon.png"  alt="Main Icon" height="25px"/>
-            <h2 className="pageHeading">STONE SEARCH</h2>
+            <img id="mainIcon" src="./rapIcon.png"  alt="Main Icon" height="15px"/>
+            <h3 className="pageHeading">STONE SEARCH</h3>
           </header>
           <InputSection
             data={this.state.dataStructured}
