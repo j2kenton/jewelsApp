@@ -5,7 +5,17 @@ const InputSection = ({ ...props }) => {
 
   this.inputValue = props.input || "";
 
-  const stoneTypes = Object.keys(props.data);
+  const allOption = {
+    label: "All",
+    value: "",
+  };
+
+  this.stoneTypes = Object.keys(props.data).map((type) => ({
+    label: type,
+    value: type,
+  }));
+
+  this.stoneTypes.push(allOption);
   let dataSet = {};
   if (props.stoneType){
     dataSet[props.stoneType] = props.data[props.stoneType];
@@ -68,10 +78,10 @@ const InputSection = ({ ...props }) => {
   };
 
   const renderStonesElements = () => {
-    return stoneTypes.map(type => {
+    return this.stoneTypes.map(type => {
       return (
-        <option>
-          {type}
+        <option value={type.value}>
+          {type.label}
         </option>
       )
     });
