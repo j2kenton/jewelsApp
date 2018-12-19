@@ -29,29 +29,25 @@ header {
   white-space: nowrap;
 }
 
-
+/* INPUT SECTION */
 #inputSection {
   margin-top: 40px;
   padding-bottom: 20px;
 }
-
 #inputSection form {
   width: 100%;
 }
-
 #inputSection form .form-group {
   width: calc(100% - 20vw);
   position: relative;
   height: 30px;
 }
-
 #inputSection form .form-group input {
   width: 100%;
   border-radius: 0;
   padding-left: 10px;
 }
-
-select {
+#inputSection form select {
   width: 20vw;
   border-radius: 0;
   background-color: #4c4c4b;
@@ -59,23 +55,21 @@ select {
   height: 30px;
   padding-left: 10px;
 }
+/* INPUT SECTION */
 
+/* STONE SECTION */
 #stonesSection {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-bottom: 30px;
 }
-
 #stonesSection > * {
   align-self: flex-start;
 }
+/* STONE SECTION */
 
-.infoItem {
-  text-align: center;
-  white-space: normal;
-}
-
+/* DROPDOWN */
 .dropdownMenu {
   position: absolute;
   top: 29px;
@@ -87,12 +81,10 @@ select {
   padding: 0;
   outline: -webkit-focus-ring-color auto 1px;
 }
-
 .dropdownMenu .optionItem {
   padding: 5px 10px 10px 10px;
   font-weight: 500;
 }
-
 .dropdownMenu .optionItem i {
   font-size: 130%;
   text-shadow: 0 1px 2px rgba(0, 0, 0, .9);
@@ -101,37 +93,34 @@ select {
   top: 5px;
   margin-right: 7px;
 }
-
 .dropdownMenu .optionItem:hover {
   background-color: #efefef;
   color: #4c4c4b;
   outline: -webkit-focus-ring-color auto 1px;
 }
-
 .dropdownMenu hr {
   background-color: #efefef;
   margin-top: 0;
   margin-bottom: 0;
 }
+/* DROPDOWN */
 
+/* TABLES */
 table th {
   background-color: #000000;
   font-weight: bold;
 }
-
 table td, table th {
   color: #efefef;
   padding: 10px 10px 5px 10px;
 }
-
 table tbody tr {
   background-color: #373737;
 }
-
 table tbody tr:nth-child(even) {
   background-color: #4c4c4b;
 }
-
 table tbody tr:hover {
   -webkit-filter: contrast(200%);
 }
+/* TABLES */

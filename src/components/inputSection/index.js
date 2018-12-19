@@ -4,6 +4,11 @@ import MaterialIcon from 'material-icons-react';
 
 const EMPTY_INPUT = "";
 
+const ALL_OPTION = {
+  label: "All Stone Types",
+  value: "",
+};
+
 const InputSection = ({ ...props }) => {
 
   this.inputValue = props.input;
@@ -11,37 +16,18 @@ const InputSection = ({ ...props }) => {
     this.inputValue = EMPTY_INPUT;
   }
 
-  const allOption = {
-    label: "All Stone Types",
-    value: "",
-  };
-
   this.stoneTypes = Object.keys(props.data).map((type) => ({
     label: type,
     value: type,
   }));
 
-  this.stoneTypes.unshift(allOption);
+  this.stoneTypes.unshift(ALL_OPTION);
   let dataSet = {};
   if (props.stoneType){
     dataSet[props.stoneType] = props.data[props.stoneType];
   } else {
     dataSet = props.data;
   }
-
-  this.inputChangeHandler = (e) => {
-    const newInput = e.target.value;
-    props.onChange(newInput);
-  };
-
-  this.stoneChangeHandler = (e) => {
-    const newInput = e.target.value;
-    props.onTypeChange(newInput);
-  };
-
-  this.optionClickHandler = (stoneOptions) => {
-    props.onSelection(stoneOptions);
-  };
 
   let listOptions = Object.entries(dataSet).map(entry => {
     const optionKey = entry[0];
@@ -129,6 +115,20 @@ const InputSection = ({ ...props }) => {
         </option>
       )
     });
+  };
+
+  this.inputChangeHandler = (e) => {
+    const newInput = e.target.value;
+    props.onChange(newInput);
+  };
+
+  this.stoneChangeHandler = (e) => {
+    const newInput = e.target.value;
+    props.onTypeChange(newInput);
+  };
+
+  this.optionClickHandler = (stoneOptions) => {
+    props.onSelection(stoneOptions);
   };
 
   return (

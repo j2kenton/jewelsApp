@@ -9,11 +9,12 @@ import utils from "./utils/general";
 const API = "./";
 const DEFAULT_QUERY = "stones.json";
 const MAX_HISTORY = 3;
+const OPTION_CLASS = "option";
 
 class StoneApp extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isLoading: false,
       selection: {},
@@ -29,34 +30,9 @@ class StoneApp extends Component {
     try {
       const url = API + DEFAULT_QUERY;
       const response = await axios.get(url);
-
-      let dataStructured = {};
-      response.data.forEach((element) => {
-        if (!dataStructured[element.type]){
-          dataStructured[element.type] = [];
-        }
-        const shape = {
-          property: "shape",
-          value: element.shape,
-        };
-        dataStructured[element.type].push(shape);
-        const clarity = {
-          property: "clarity",
-          value: element.clarity,
-        };
-        dataStructured[element.type].push(clarity);
-        if (typeof element.color === "string"){
-          const color = {
-            property: "color",
-            value: element.color,
-          };
-          dataStructured[element.type].push(color);
-        }
-      });
-
       this.setState({
         data: response.data,
-        dataStructured: dataStructured,
+        dataStructured: utils.structureData(response.data),
         isLoading: false
       });
     } catch (error) {
@@ -118,7 +94,7 @@ class StoneApp extends Component {
 
   wrapperClickHandler = (e) => {
     const targetClasses = e.target.className.split(" ");
-    const isOptionClick = targetClasses.includes("option");
+    const isOptionClick = targetClasses.includes(OPTION_CLASS);
     const newInput = this.state.selection.label || "";
     if (!isOptionClick && this.state.isTyping){
       this.setState({
@@ -135,7 +111,7 @@ class StoneApp extends Component {
           onClick={this.wrapperClickHandler}
         >
           <header>
-            <img id="mainIcon" src="./rapIcon.png"  alt="Main Icon" height="15px"/>
+            <img id="mainIcon" src="./rapaportIcon.png"  alt="Main Icon" height="15px"/>
             <h3 className="pageHeading">STONE SEARCH</h3>
           </header>
           <InputSection

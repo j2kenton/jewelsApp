@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default function carousel(WrappedComponent) {
   return class extends Component {
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
+    shouldComponentUpdate(nextProps) {
       const isInputValid = (typeof nextProps.input === "string");
       const isInputChanged = (this.props.input !== nextProps.input);
       const isStoneTypeValid = (typeof nextProps.stoneType === "string");
@@ -16,5 +16,6 @@ export default function carousel(WrappedComponent) {
         <WrappedComponent {...this.props} />
       );
     }
+
   };
 }

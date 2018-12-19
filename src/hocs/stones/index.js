@@ -5,7 +5,7 @@ export default function stones(WrappedComponent) {
 
     static displayName = `Stones(${WrappedComponent.name})`;
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
+    shouldComponentUpdate(nextProps) {
       const isSelectionValid = (typeof nextProps.selection === "object");
       const isSelectionChanged = (this.props.selection !== nextProps.selection);
       return isSelectionValid && isSelectionChanged;
@@ -16,5 +16,6 @@ export default function stones(WrappedComponent) {
         <WrappedComponent {...this.props} />
       );
     }
+
   };
 }

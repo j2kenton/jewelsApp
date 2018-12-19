@@ -23,14 +23,14 @@ const Stones = ({ ...props }) => {
         <StoneItem
           value={value}
           key={arrayIndex}
-          onChange={props.onChange}
         />
       )
     })
+
   };
 
   return (
-    <div className="row" id="stonesSection" {...props} >
+    <div className="row" id="stonesSection">
       <table>
         <thead>
         <tr>
@@ -47,6 +47,7 @@ const Stones = ({ ...props }) => {
       </table>
     </div>
   );
+
 };
 
 export default stones(Stones);
