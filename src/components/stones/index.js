@@ -7,12 +7,13 @@ const Stones = ({ ...props }) => {
   const renderStoneItems = (props) => {
 
     const stoneFilter = (stone) => {
-      if (typeof stone.type !== "string" || typeof props.input !== "string"){
+      if (typeof props.selection !== "object" || typeof props.selection.parent !== "string"){
         return true;
       }
-      const type = stone.type.toLowerCase();
-      const input = props.input.toLowerCase();
-      return type.indexOf(input) === 0;
+      const key = props.selection.property;
+      const value = props.selection.value;
+      const stoneType = props.selection.parent;
+      return (stone.type === stoneType) && (stone[key] === value);
     };
 
     const stonesFiltered = props.data.filter(stoneFilter);

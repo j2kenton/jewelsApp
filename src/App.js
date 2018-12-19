@@ -148,7 +148,7 @@ class StoneApp extends Component {
           />
           <Stones
             data={this.state.data}
-            input={this.state.input}
+            selection={this.state.selection}
             onChange={this.selectionCallback}
           />
         </div>
