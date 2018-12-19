@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default function carousel(WrappedComponent) {
+export default function appComponent(WrappedComponent) {
   return class extends Component {
 
     shouldComponentUpdate(nextProps) {
