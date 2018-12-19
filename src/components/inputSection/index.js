@@ -1,9 +1,14 @@
 import React from 'react';
 import inputSection from '../../hocs/inputSection';
 
+const EMPTY_INPUT = "";
+
 const InputSection = ({ ...props }) => {
 
-  this.inputValue = props.input || "";
+  this.inputValue = props.input;
+  if (typeof this.inputValue !== "string"){
+    this.inputValue = EMPTY_INPUT;
+  }
 
   const allOption = {
     label: "All",
@@ -37,7 +42,6 @@ const InputSection = ({ ...props }) => {
     props.onSelection(stoneOptions);
   };
 
-
   let listOptions = Object.entries(dataSet).map(entry => {
     const optionKey = entry[0];
     const optionValue = entry[1];
@@ -64,7 +68,7 @@ const InputSection = ({ ...props }) => {
   });
 
   const renderOptionsElements = () => {
-    if (!Array.isArray(this.optionsFlat) || this.optionsFlat.length === 0){
+    if (!props.input || !Array.isArray(this.optionsFlat) || this.optionsFlat.length === 0){
       return null;
     }
     const historyElements =  props.history.map(stoneOptions => {
