@@ -68,17 +68,25 @@ class StoneApp extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    this.loadInput();
+    this.loadHistory();
     this.getData();
   }
 
-  storeInput = (input) => {
-    localStorage.setItem("input", input);
+  storeHistory = (history) => {
+    localStorage.setItem("history", JSON.stringify(history));
   };
 
-  loadInput = () => {
-    const input = localStorage.getItem("input");
-    this.setState({ input: input });
+  loadHistory = () => {
+    try {
+      const history = JSON.parse(localStorage.getItem("history"));
+      if (Array.isArray(history) && history.length > 0){
+        this.setState({
+          history: history
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   selectionCallback = (newSelection) => {
@@ -89,6 +97,7 @@ class StoneApp extends Component {
       input: newSelection.label,
       history: newHistory,
     });
+    this.storeHistory(newHistory);
   };
 
   inputChangeCallback = (newInput) => {
