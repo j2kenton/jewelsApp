@@ -85,6 +85,9 @@ const InputSection = ({ ...props }) => {
       )
     });
     const optionsElements =  this.optionsFlat.map(stoneOptions => {
+      if (!stoneOptions.label){
+        return null;
+      }
       return (
         <li
           className="optionItem"
