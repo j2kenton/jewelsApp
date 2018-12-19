@@ -98,6 +98,7 @@ class StoneApp extends Component {
       selection: newSelection,
       input: newSelection.label,
       history: newHistory,
+      isTyping: false,
     });
     this.storeHistory(newHistory);
   };
@@ -105,6 +106,7 @@ class StoneApp extends Component {
   inputChangeCallback = (newInput) => {
     this.setState({
       input: newInput,
+      isTyping: true,
     });
   };
 
@@ -114,16 +116,23 @@ class StoneApp extends Component {
     });
   };
 
-  submissionCallback = () => {
-    this.storeInput(this.state.input);
-    // this.bookStone(this.state.input, this.state.selection)
-    //   .catch(error => console.log(error));
+  wrapperClickHandler = (e) => {
+    const targetClasses = e.target.className.split(" ");
+    const isOptionClick = targetClasses.includes("optionItem");
+    if (!isOptionClick && this.state.isTyping){
+      this.setState({
+        input: "",
+      });
+    }
   };
 
   render() {
     if (!this.state.isLoading && Array.isArray(this.state.data) && (this.state.data.length > 0)) {
       return (
-        <div className="container">
+        <div
+          className="container"
+          onClick={this.wrapperClickHandler}
+        >
           <h1>Rapaport Stone Search</h1>
           <InputSection
             data={this.state.dataStructured}
@@ -132,7 +141,6 @@ class StoneApp extends Component {
             onChange={this.inputChangeCallback}
             onTypeChange={this.typeChangeCallback}
             onSelection={this.selectionCallback}
-            submissionHandler={this.submissionCallback}
             history={this.state.history}
           />
           <Stones
@@ -150,7 +158,9 @@ class StoneApp extends Component {
 
 export default function App() {
   return (
-    <div id="wrapper">
+    <div
+      id="wrapper"
+    >
       <StoneApp/>
     </div>
   )

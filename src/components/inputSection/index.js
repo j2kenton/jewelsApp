@@ -74,7 +74,7 @@ const InputSection = ({ ...props }) => {
     const historyElements =  props.history.map(stoneOptions => {
       return (
         <li
-          className="red"
+          className="optionItem red"
           value={stoneOptions.label}
           onClick={() => this.optionClickHandler(stoneOptions)}
         >
@@ -85,6 +85,7 @@ const InputSection = ({ ...props }) => {
     const optionsElements =  this.optionsFlat.map(stoneOptions => {
       return (
         <li
+          className="optionItem"
           value={stoneOptions.label}
           onClick={() => this.optionClickHandler(stoneOptions)}
         >
