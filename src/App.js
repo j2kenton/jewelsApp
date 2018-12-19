@@ -8,6 +8,7 @@ import utils from "./utils/general";
 
 const API = "./";
 const DEFAULT_QUERY = "stones.json";
+const MAX_HISTORY = 3;
 
 class StoneApp extends Component {
 
@@ -90,8 +91,9 @@ class StoneApp extends Component {
   };
 
   selectionCallback = (newSelection) => {
-    let newHistory = this.state.history;
-    newHistory.push(newSelection);
+    const maxOldElements = MAX_HISTORY - 1; // number of elements from old history array to keep
+    let newHistory = this.state.history.slice(0, maxOldElements); // take last 2 searches
+    newHistory.unshift(newSelection); // add the new search as the 1st element of 3
     this.setState({
       selection: newSelection,
       input: newSelection.label,
